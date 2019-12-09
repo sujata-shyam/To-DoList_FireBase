@@ -16,6 +16,11 @@ class Task
     var done: Bool 
     var note: String? = nil
     
+    var priority: Int = 0
+    var remind: Bool = false
+    var dueDate: String? = nil
+    var creationDate: String? = nil
+    
     init(name: String, done: Bool)
     {
         self.ref = nil
@@ -28,7 +33,11 @@ class Task
         guard
             let value = snapshot.value as? [String: AnyObject],
             let done = value["done"] as? Bool,
-            let note = value["note"] as? String else {
+            let note = value["note"] as? String,
+            let priority = value["priority"] as? Int,
+            let remind = value["remind"] as? Bool,
+            let dueDate = value["dueDate"] as? String,
+            let creationDate = value["creationDate"] as? String else {
                 return nil
         }
         
@@ -36,13 +45,21 @@ class Task
         self.name = snapshot.key
         self.done = done
         self.note = note
+        self.priority = priority
+        self.remind = remind
+        self.dueDate = dueDate
+        self.creationDate = creationDate
     }
     
     func toAnyObject() -> Any {
         return [
             "name": name,
             "done": done,
-            "note": note 
+            "note": note ?? "",
+            "priority": priority,
+            "remind": remind,
+            "dueDate": dueDate ?? "",
+            "creationDate": creationDate ?? ""
         ]
     }
 }

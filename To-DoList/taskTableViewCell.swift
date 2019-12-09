@@ -10,6 +10,8 @@ import UIKit
 
 class taskTableViewCell: UITableViewCell
 {
-    @IBOutlet weak var lblTitle: UILabel!    
+    @IBOutlet weak var lblPriority: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblCreationDate: UILabel!
 }
 

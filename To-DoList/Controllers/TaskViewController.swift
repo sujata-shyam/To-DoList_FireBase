@@ -15,11 +15,14 @@ class TaskViewController: UITableViewController
     var tasks = [Task]()
     var ref: DatabaseReference!
     
+    let formatter = DateFormatter()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         ref = Database.database().reference(withPath: "Task")
+        
+        setDateFomatter()
         
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
 
@@ -27,6 +30,9 @@ class TaskViewController: UITableViewController
         
         tableView.addGestureRecognizer(longPressRecognizer)
         
+//        self.tableView.estimatedRowHeight = 100
+//        self.tableView.rowHeight = UITableView.automaticDimension
+
         loadTasks()
     }
     
@@ -56,18 +62,41 @@ class TaskViewController: UITableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? taskTableViewCell
         
         cell?.lblTitle.text = tasks[indexPath.row].name
+        cell?.lblCreationDate?.text = tasks[indexPath.row].creationDate
+        cell?.lblPriority.backgroundColor = setPriorityColor(index: indexPath.row)
+        
         //cell?.accessoryType = tasks[indexPath.row].done ? .checkmark : .none
 
-        //toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
-
         return cell!
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        //self.tableView.estimatedRowHeight = 100
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 100.0
+    }
+    
+    func setPriorityColor(index:Int)->UIColor
+    {
+        switch tasks[index].priority {
+        case 1:
+           return #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        case 2:
+            return #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        default:
+            return #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        }
+        
     }
     
     //MARK: - TableView Delegate methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        //tasks[indexPath.row].done = !tasks[indexPath.row].done
-        //saveCategories()
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
 
         let taskItem = tasks[indexPath.row]
@@ -120,14 +149,12 @@ class TaskViewController: UITableViewController
                     newTasks.append(tempTask)
                 }
             }
-            print(newTasks)
+            //print(newTasks)
             
             self.tasks = newTasks
             self.tableView.reloadData()
         })
     }
-
-
     
 //    func loadCategories(with request:NSFetchRequest<Category> = Category.fetchRequest(), predicate: NSPredicate? = nil)
 //    {
@@ -149,10 +176,24 @@ class TaskViewController: UITableViewController
     func saveInFIRdb(_ name: String)
     {
         let taskRef = self.ref.child(name)
+        
         let doneRef = taskRef.child("done")
-        doneRef.setValue(true)
+        doneRef.setValue(false)
+        
         let noteRef = taskRef.child("note")
         noteRef.setValue("")
+        
+        let priorityRef = taskRef.child("priority")
+        priorityRef.setValue(0)
+        
+        let remindRef = taskRef.child("remind")
+        remindRef.setValue(false)
+        
+        let dueDateRef = taskRef.child("dueDate")
+        dueDateRef.setValue("")
+        
+        let creationDateRef = taskRef.child("creationDate")
+        creationDateRef.setValue(formatter.string(from: Date()))
     }
     
     func createAddAlertAction()
@@ -257,8 +298,26 @@ class TaskViewController: UITableViewController
         let noteRef = newtaskRef.child("note")
         noteRef.setValue(taskItem.note)
         
+        let remindRef = newtaskRef.child("remind")
+        remindRef.setValue(taskItem.remind)
+        
+        let priorityRef = newtaskRef.child("priority")
+        priorityRef.setValue(taskItem.priority)
+        
+        let dueDateRef = newtaskRef.child("dueDate")
+        dueDateRef.setValue(taskItem.dueDate)
+        
+        let creationDateRef = newtaskRef.child("creationDate")
+        creationDateRef.setValue(taskItem.creationDate)
+        
         taskItem.ref?.removeValue()
         self.tasks.remove(at: index)
+    }
+    
+    func setDateFomatter()
+    {
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
     }
 }
 
