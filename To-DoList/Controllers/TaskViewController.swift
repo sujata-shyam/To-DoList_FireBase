@@ -260,27 +260,26 @@ class TaskViewController: UITableViewController
         taskItem.ref?.removeValue()
         self.tasks.remove(at: index)
     }
-    
 }
 
-//extension CategoryViewController: UISearchBarDelegate
+//extension TaskViewController: UISearchBarDelegate
 //{
 //    func createRequest(searchText:String)->(NSFetchRequest<Category>,NSPredicate)
 //    {
 //        let request : NSFetchRequest<Category> = Category.fetchRequest()
-//        
+//
 //        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
-//        
+//
 //        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
 //        return (request,predicate)
 //    }
-//    
+//
 //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
 //    {
 //        let result = createRequest(searchText:searchBar.text!)
 //        loadCategories(with: result.0, predicate: result.1)
 //    }
-//    
+//
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
 //    {
 //        if(searchBar.text?.count == 0)
@@ -297,6 +296,20 @@ class TaskViewController: UITableViewController
 //            loadCategories(with: result.0, predicate: result.1)
 //        }
 //    }
+//
+//        func findUsers(text: String)->Void
+//        {
+//            ref.child("Users").queryOrderedByChild("name").queryStartingAtValue(text).queryEnding(atValue: text+"\u{f8ff}").observe(.Value, with: { snapshot in
+//            var user = Task()
+//            var users = [Task]()
+//            for u in snapshot.children{
+//                user.name = u.value!["name"] as? String
+//                    ...
+//                    users.append(user)
+//            }
+//            self.users = users
+//            })
+//        }
 //}
 
 

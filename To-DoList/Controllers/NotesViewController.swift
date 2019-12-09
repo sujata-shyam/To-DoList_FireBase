@@ -41,15 +41,6 @@ class NotesViewController: UIViewController
             titleTextView.text = selectedTask?.name
             noteTextView.text = selectedTask?.note
         }
-        
-        //titleTextView.text = selectedCategory.name
-//        if(globalNote != nil)
-//        {
-//            if let note = globalNote?.note
-//            {
-//                noteTextView.text = note
-//            }
-//        }
     }
     
     //MARK: - UIbutton functions
@@ -60,20 +51,6 @@ class NotesViewController: UIViewController
         {
             saveNotes()
         }
-//        let newNote = Notes(context: self.context)
-//
-//        if(isNew)
-//        {
-//            newNote.parentCategory = self.selectedCategory
-//            newNote.note = noteTextView.text
-//            isNew = false
-//
-//            self.saveNotes()
-//        }
-//        else
-//        {
-//            loadUpdateNotes(isUpdate:true)
-//        }
     }
     
     @IBAction func btnCancelTapped(_ sender: UIButton)
