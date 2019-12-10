@@ -149,27 +149,15 @@ class TaskViewController: UITableViewController
                     newTasks.append(tempTask)
                 }
             }
-            //print(newTasks)
             
-            self.tasks = newTasks
+//            let temp34 = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+//            self.tasks = temp34
+            
+            self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+            
             self.tableView.reloadData()
         })
     }
-    
-//    func loadCategories(with request:NSFetchRequest<Category> = Category.fetchRequest(), predicate: NSPredicate? = nil)
-//    {
-//        request.predicate = predicate
-//
-//        do
-//        {
-//            categories = try context.fetch(request)
-//        }
-//        catch
-//        {
-//            print("Error fetching data from context:\(error)")
-//        }
-//        tableView.reloadData()
-//    }
     
     //MARK: - Add New Categories
 

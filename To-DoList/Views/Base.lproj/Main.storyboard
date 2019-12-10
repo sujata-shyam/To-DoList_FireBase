@@ -127,20 +127,21 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z8H-e1-Sbi" userLabel="titleTextView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="66.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QcT-k3-Tdx">
-                                <rect key="frame" x="5" y="130.5" width="365" height="53.5"/>
+                                <rect key="frame" x="5" y="130.5" width="365" height="33.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTh-vs-png" userLabel="lblSwitch">
-                                        <rect key="frame" x="0.0" y="16.5" width="313" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="6.5" width="313" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-JL-hhn" userLabel="switchRemind">
-                                        <rect key="frame" x="316" y="11.5" width="51" height="31"/>
+                                        <rect key="frame" x="316" y="1.5" width="51" height="31"/>
                                         <connections>
                                             <action selector="switchFlipped:" destination="MUp-Rm-RBr" eventType="valueChanged" id="gfY-hR-mKj"/>
                                         </connections>
@@ -148,14 +149,14 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58K-8a-m0K" userLabel="lblDate">
-                                <rect key="frame" x="0.0" y="184" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.82579007110000002" green="1" blue="0.99304957760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Kp2-L2-gGx" userLabel="datePicker">
-                                <rect key="frame" x="0.0" y="234" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="214" width="375" height="133.5"/>
                                 <date key="date" timeIntervalSinceReferenceDate="597462584.98839605">
                                     <!--2019-12-08 01:49:44 +0000-->
                                 </date>
@@ -164,16 +165,16 @@
                                 </connections>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="OKM-Z3-FeE" userLabel="StackViewPriority">
-                                <rect key="frame" x="0.0" y="434" width="375" height="66.5"/>
+                                <rect key="frame" x="0.0" y="347.5" width="375" height="52.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atf-r9-Lw9">
-                                        <rect key="frame" x="0.0" y="0.0" width="59.5" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59.5" height="52.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r46-cS-nit" userLabel="segmentPriority">
-                                        <rect key="frame" x="94.5" y="0.0" width="280.5" height="67.5"/>
+                                        <rect key="frame" x="94.5" y="0.0" width="280.5" height="53.5"/>
                                         <segments>
                                             <segment title="Low"/>
                                             <segment title="Med."/>
@@ -186,7 +187,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QVm-zP-Pa2" userLabel="StackViewNotes">
-                                <rect key="frame" x="0.0" y="500.5" width="375" height="133"/>
+                                <rect key="frame" x="0.0" y="400" width="375" height="233.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01B-Vx-RY8" userLabel="lblNotes">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
@@ -196,7 +197,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-pu-Ot3" userLabel="noteTextView">
-                                        <rect key="frame" x="0.0" y="20.5" width="375" height="112.5"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="375" height="213"/>
                                         <color key="backgroundColor" red="0.82579007110000002" green="1" blue="0.99304957760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -260,7 +261,7 @@
                             <constraint firstItem="QVm-zP-Pa2" firstAttribute="top" secondItem="OKM-Z3-FeE" secondAttribute="bottom" id="DgJ-qY-Jnx"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="KYb-E4-Waq"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="QcT-k3-Tdx" secondAttribute="trailing" constant="5" id="Phj-bc-CI6"/>
-                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.2" id="Pno-7M-fcI"/>
+                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.35" id="Pno-7M-fcI"/>
                             <constraint firstItem="OKM-Z3-FeE" firstAttribute="top" secondItem="Kp2-L2-gGx" secondAttribute="bottom" id="QRJ-MF-4k0"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="eLB-R9-zhq" secondAttribute="trailing" id="T1f-XJ-Sld"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="top" secondItem="QcT-k3-Tdx" secondAttribute="bottom" id="TaU-zY-I4e"/>
@@ -272,9 +273,9 @@
                             <constraint firstItem="QVm-zP-Pa2" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="bKz-cG-uZZ"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="OKM-Z3-FeE" secondAttribute="trailing" id="bRv-7T-Znu"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="bottom" secondItem="eLB-R9-zhq" secondAttribute="bottom" id="blb-pl-yL8"/>
-                            <constraint firstItem="QcT-k3-Tdx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.08" id="cMF-2a-QoG"/>
+                            <constraint firstItem="QcT-k3-Tdx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.05" id="cMF-2a-QoG"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.075" id="fye-tD-q3T"/>
-                            <constraint firstItem="Kp2-L2-gGx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.3" id="rPp-Uj-my8"/>
+                            <constraint firstItem="Kp2-L2-gGx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.2" id="rPp-Uj-my8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T8a-ge-cjR"/>
                     </view>

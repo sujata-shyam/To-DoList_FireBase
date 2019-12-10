@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import UserNotifications
 
 class NotesViewController: UIViewController
 {
@@ -31,6 +32,8 @@ class NotesViewController: UIViewController
     
     let formatter = DateFormatter()
     
+    let center = UNUserNotificationCenter.current()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -43,7 +46,7 @@ class NotesViewController: UIViewController
         let swipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         noteTextView.addGestureRecognizer(swipe)
         
-        updateYearConstraints()
+        //updateYearConstraints()
     }
     
     func setDateFomatter()
@@ -65,15 +68,7 @@ class NotesViewController: UIViewController
             if(selectedTask?.dueDate != "")
             {
                 checkIfdue()
-                
-//                let tempDate = formatter.date(from: selectedTask!.dueDate!)
-//                datePicker.setDate(tempDate!, animated: true)
-            
             }
-//            else
-//            {
-//                lblDate.text = ""
-//            }
         }
     }
     
@@ -85,6 +80,7 @@ class NotesViewController: UIViewController
             {
                 lblDate.textColor = #colorLiteral(red: 1, green: 0.09992860631, blue: 0.1151061647, alpha: 1)
                 titleTextView.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+                showAlert("Task due-date passed")
             }
             datePicker.setDate(tempDate, animated: true)
             //lblDate.text = selectedTask?.dueDate
@@ -114,7 +110,7 @@ class NotesViewController: UIViewController
     
     func updateDatePickerLabel()
     {
-        //let currentDateTime = Date() //Get current date and time
+//        let currentDateTime = Date() //Get current date and time
 //        let formatter = DateFormatter()
 //
 //        formatter.timeStyle = .short
@@ -125,7 +121,7 @@ class NotesViewController: UIViewController
         //lblDate.text = currentDate
     }
     
-    //MARK: - Remind Switch Functions
+    //MARK: - Priority Segment Functions
     @IBAction func priorityChanged(_ sender: UISegmentedControl)
     {
         switch sender.selectedSegmentIndex
@@ -147,11 +143,20 @@ class NotesViewController: UIViewController
         updateDatePickerLabel()
     }
     
-    
     //MARK: - Remind Switch Functions
     @IBAction func switchFlipped(_ sender: UISwitch)
     {        
         datePicker.isUserInteractionEnabled = sender.isOn ? true : false
+        
+        if(sender.isOn)
+        {
+            enableNotification()
+            updateYearConstraints()
+        }
+        else
+        {
+            lblDate.text = ""
+        }
     }
     
     //MARK: - UIbutton functions
@@ -211,14 +216,15 @@ class NotesViewController: UIViewController
         
         if(switchRemind.isOn)
         {
+            if(!lblDate.text!.isEmpty)
+            {
+                selectedTask?.ref!.updateChildValues(["dueDate": lblDate.text ?? ""])
+            }
+            
             selectedTask?.ref!.updateChildValues(["remind": true])
-            //selectedTask?.ref!.updateChildValues(["remind": switchRemind.isOn ? true : false])
+            self.scheduleNotification()
         }
         
-        if(!lblDate.text!.isEmpty)
-        {
-            selectedTask?.ref!.updateChildValues(["dueDate": lblDate.text ?? ""])
-        }
     }
     
     //MARK: - Dismiss the keyboard
@@ -226,5 +232,88 @@ class NotesViewController: UIViewController
     {
         //Causes the view to resign from the status of first responder.
         noteTextView.resignFirstResponder()
+    }
+    
+    func showAlert(_ alertMessage:String)
+    {
+//        let alert = UIAlertController(title: "", message: "Task due-date passed", preferredStyle: .alert)
+
+        let alert = UIAlertController(title: "", message: alertMessage, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Notification Functions
+    
+    func enableNotification()
+    {
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Yay")
+            } else {
+                print("D'oh")
+            }
+        }
+    }
+    
+    func scheduleNotification()
+    {
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            
+            if settings.alertSetting == .enabled
+            {
+                let content = UNMutableNotificationContent()
+            
+            content.title = "To-Do Reminder"
+                content.body = self.selectedTask!.name
+                content.sound = UNNotificationSound.default
+            
+                
+//            DispatchQueue.main.async {
+//                //content.badge = NSNumber(integerLiteral: UIApplication.shared.applicationIconBadgeNumber + 1)
+//                content.badge = 1
+//            }
+            
+                
+                if let dateComponents = self.configureDateComponent()
+                {
+                    let trigger = UNCalendarNotificationTrigger(
+                        dateMatching: dateComponents, repeats: false)
+            
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    self.center.add(request)
+                }
+            }
+        }
+    }
+    
+    func configureDateComponent()->DateComponents?
+    {
+        //if let tempDate = self.formatter.date(from: self.lblDate.text!)
+        //if let tempDate = self.formatter.date(from: selectedTask!.dueDate!)
+        
+        var tempDate = Date()
+        DispatchQueue.main.async
+        {
+            tempDate = self.datePicker.date
+        }  //{
+            var dateComponents = DateComponents()
+            
+            dateComponents.calendar = Calendar.current
+            
+            dateComponents.hour = dateComponents.calendar!.component(.hour, from: tempDate)
+            dateComponents.minute = dateComponents.calendar!.component(.minute, from: tempDate)
+            
+            dateComponents.year = dateComponents.calendar!.component(.year, from: tempDate)
+            dateComponents.month = dateComponents.calendar!.component(.month, from: tempDate)
+            dateComponents.day = dateComponents.calendar!.component(.day, from: tempDate)
+            
+            return dateComponents
+        
+
     }
 }
