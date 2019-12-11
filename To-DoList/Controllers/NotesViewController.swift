@@ -41,11 +41,16 @@ class NotesViewController: UIViewController
         ref = Database.database().reference(withPath: "Task")
 
         setDateFomatter()
-        
         updateTextView()
         
-        let swipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(DismissKeyboard))
-        noteTextView.addGestureRecognizer(swipe)
+        noteTextView.delegate = (self as UITextViewDelegate)
+        
+        let noteSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(noteDismissKeyboard))
+        
+        let titleSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(titleDismissKeyboard))
+        
+        noteTextView.addGestureRecognizer(noteSwipe)
+        titleTextView.addGestureRecognizer(titleSwipe)
         
         //updateYearConstraints()
     }
@@ -81,12 +86,6 @@ class NotesViewController: UIViewController
             {
                 lblDate.textColor = #colorLiteral(red: 1, green: 0.09992860631, blue: 0.1151061647, alpha: 1)
                 titleTextView.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                
-//                if(isAlertShown == false)
-//                {
-//                    showAlert("Task due-date passed")
-//                    isAlertShown = true
-//                }
             }
             
             datePicker.setDate(tempDate, animated: true)
@@ -183,12 +182,6 @@ class NotesViewController: UIViewController
     
     @IBAction func btnExitTapped(_ sender: UIButton)
     {
-        //Delete the row from the data source
-//        if globalNote != nil
-//        {
-//            context.delete(globalNote!)
-//            saveDetails()
-//        }
         navigationController?.popViewController(animated: true)
     }
     //MARK: - Model Manipulation Methods
@@ -228,9 +221,14 @@ class NotesViewController: UIViewController
     }
     
     //MARK: - Dismiss the keyboard
-    @objc func DismissKeyboard()
+    @objc func titleDismissKeyboard()
     {
         //Causes the view to resign from the status of first responder.
+        titleTextView.resignFirstResponder()
+    }
+    
+    @objc func noteDismissKeyboard()
+    {
         noteTextView.resignFirstResponder()
     }
     
@@ -268,7 +266,7 @@ class NotesViewController: UIViewController
             {
                 let content = UNMutableNotificationContent()
             
-            content.title = "To-Do Reminder"
+                content.title = "To-Do Reminder"
                 content.body = self.selectedTask!.name
                 content.sound = UNNotificationSound.default
             
@@ -312,5 +310,30 @@ class NotesViewController: UIViewController
         dateComponents.day = dateComponents.calendar!.component(.day, from: tempDate)
         
         return dateComponents
+    }
+}
+
+extension NotesViewController: UITextViewDelegate
+{
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        animateViewMoving(up: true, moveValue: 100)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        animateViewMoving(up: false, moveValue: 100)
+    }
+    
+    // Lifting the view up when keyboard is displayed
+    func animateViewMoving (up:Bool, moveValue :CGFloat)
+    {
+        let movementDuration:TimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
 }

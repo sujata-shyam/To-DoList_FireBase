@@ -167,9 +167,14 @@ class TaskViewController: UITableViewController
             }
             
 //            let temp34 = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+//
 //            self.tasks = temp34
             
-            self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+            if(newTasks.count>0)
+            {
+                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+            }
+            //self.tasks = newTasks
             
             self.tableView.reloadData()
 //            self.view.layoutIfNeeded()
