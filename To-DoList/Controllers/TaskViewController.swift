@@ -30,7 +30,8 @@ class TaskViewController: UITableViewController
         
         tableView.addGestureRecognizer(longPressRecognizer)
         
-//        self.tableView.estimatedRowHeight = 100
+        
+//        self.tableView.estimatedRowHeight = 600
 //        self.tableView.rowHeight = UITableView.automaticDimension
 
         loadTasks()
@@ -61,6 +62,10 @@ class TaskViewController: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? taskTableViewCell
         
+        //cell?.layer.borderColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        //cell?.layer.borderWidth = 1.0
+        //cell?.layer.cornerRadius = 2
+        
         cell?.lblTitle.text = tasks[indexPath.row].name
         cell?.lblCreationDate?.text = tasks[indexPath.row].creationDate
         cell?.lblPriority.backgroundColor = setPriorityColor(index: indexPath.row)
@@ -70,16 +75,27 @@ class TaskViewController: UITableViewController
         return cell!
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        //self.tableView.estimatedRowHeight = 100
-        return UITableView.automaticDimension
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int
+//    {
+//        return 1
+//    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        //self.tableView.estimatedRowHeight = 100
+//        return UITableView.automaticDimension
+//    }
+//
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        return 100.0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+//    {
+//        return 10.0
+//    }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 100.0
-    }
+    
     
     func setPriorityColor(index:Int)->UIColor
     {
@@ -156,6 +172,7 @@ class TaskViewController: UITableViewController
             self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
             
             self.tableView.reloadData()
+//            self.view.layoutIfNeeded()
         })
     }
     

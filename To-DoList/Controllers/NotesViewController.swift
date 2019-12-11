@@ -24,9 +24,10 @@ class NotesViewController: UIViewController
     
     var ref: DatabaseReference!
 
-    var globalNote:Notes? = nil
-    var globalNoteText:String? = nil
-    var isNew = true
+    //var globalNote:Notes? = nil
+    //var globalNoteText:String? = nil
+    //var isNew = true
+    //var isAlertShown = false
     
     var selectedTask:Task? = nil //Value passed from prev. View Controller
     
@@ -80,9 +81,17 @@ class NotesViewController: UIViewController
             {
                 lblDate.textColor = #colorLiteral(red: 1, green: 0.09992860631, blue: 0.1151061647, alpha: 1)
                 titleTextView.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                showAlert("Task due-date passed")
+                
+//                if(isAlertShown == false)
+//                {
+//                    showAlert("Task due-date passed")
+//                    isAlertShown = true
+//                }
             }
+            
             datePicker.setDate(tempDate, animated: true)
+            datePicker.isUserInteractionEnabled = true
+            
             //lblDate.text = selectedTask?.dueDate
         }
     }
@@ -96,46 +105,28 @@ class NotesViewController: UIViewController
         {
             updateDatePickerLabel()
         }
-        
-//        TESTING CODE
-//        let date = Date()
-//        let calendar = Calendar.current
-//        let hour = calendar.component(.hour, from: date)
-//        let minute = calendar.component(.minute, from: date)
-//        print("hour: \(hour)")
-//        print("minute: \(minute)")
-//        datePicker.minimumDate =
-//        datePicker.maximumDate=
     }
     
     func updateDatePickerLabel()
     {
-//        let currentDateTime = Date() //Get current date and time
-//        let formatter = DateFormatter()
-//
-//        formatter.timeStyle = .short
-//        formatter.dateStyle = .medium
-        
         lblDate.text = formatter.string(from: datePicker.date)
-        
-        //lblDate.text = currentDate
     }
     
     //MARK: - Priority Segment Functions
-    @IBAction func priorityChanged(_ sender: UISegmentedControl)
-    {
-        switch sender.selectedSegmentIndex
-        {
-            case 0:
-                print("None")
-            case 1:
-                print("Imp")
-            case 2:
-                print("Very Imp")
-            default:
-                print("default")
-        }
-    }
+//    @IBAction func priorityChanged(_ sender: UISegmentedControl)
+//    {
+//        switch sender.selectedSegmentIndex
+//        {
+//            case 0:
+//                print("None")
+//            case 1:
+//                print("Imp")
+//            case 2:
+//                print("Very Imp")
+//            default:
+//                print("default")
+//        }
+//    }
     
     //MARK: - Date Picker Function
     @IBAction func datePickerUpdated(_ sender: UIDatePicker)
@@ -204,15 +195,19 @@ class NotesViewController: UIViewController
     
     func saveDetails()
     {
-        if(!noteTextView.text.isEmpty)
-        {
-            selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
-        }
+        selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
         
-        if(segmentPriority.selectedSegmentIndex > 0 )
-        {
-            selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
-        }
+        selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
+        
+        //        if(!noteTextView.text.isEmpty)
+//        {
+//            selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
+//        }
+        
+//        if(segmentPriority.selectedSegmentIndex > 0 )
+//        {
+//            selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
+//        }
         
         if(switchRemind.isOn)
         {
@@ -223,6 +218,11 @@ class NotesViewController: UIViewController
             
             selectedTask?.ref!.updateChildValues(["remind": true])
             self.scheduleNotification()
+        }
+        else if(!switchRemind.isOn)
+        {
+            selectedTask?.ref!.updateChildValues(["dueDate": ""])
+            selectedTask?.ref!.updateChildValues(["remind": false])
         }
         
     }
@@ -293,27 +293,24 @@ class NotesViewController: UIViewController
     
     func configureDateComponent()->DateComponents?
     {
-        //if let tempDate = self.formatter.date(from: self.lblDate.text!)
-        //if let tempDate = self.formatter.date(from: selectedTask!.dueDate!)
-        
         var tempDate = Date()
+        
         DispatchQueue.main.async
         {
             tempDate = self.datePicker.date
-        }  //{
-            var dateComponents = DateComponents()
-            
-            dateComponents.calendar = Calendar.current
-            
-            dateComponents.hour = dateComponents.calendar!.component(.hour, from: tempDate)
-            dateComponents.minute = dateComponents.calendar!.component(.minute, from: tempDate)
-            
-            dateComponents.year = dateComponents.calendar!.component(.year, from: tempDate)
-            dateComponents.month = dateComponents.calendar!.component(.month, from: tempDate)
-            dateComponents.day = dateComponents.calendar!.component(.day, from: tempDate)
-            
-            return dateComponents
+        }
         
-
+        var dateComponents = DateComponents()
+        
+        dateComponents.calendar = Calendar.current
+        
+        dateComponents.hour = dateComponents.calendar!.component(.hour, from: tempDate)
+        dateComponents.minute = dateComponents.calendar!.component(.minute, from: tempDate)
+        
+        dateComponents.year = dateComponents.calendar!.component(.year, from: tempDate)
+        dateComponents.month = dateComponents.calendar!.component(.month, from: tempDate)
+        dateComponents.day = dateComponents.calendar!.component(.day, from: tempDate)
+        
+        return dateComponents
     }
 }
