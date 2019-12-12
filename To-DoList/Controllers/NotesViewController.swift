@@ -22,19 +22,22 @@ class NotesViewController: UIViewController
     @IBOutlet weak var segmentPriority: UISegmentedControl!
     @IBOutlet weak var noteTextView: UITextView!
     
-    var ref: DatabaseReference!
-
-    //var globalNote:Notes? = nil
-    //var globalNoteText:String? = nil
-    //var isNew = true
-    //var isAlertShown = false
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnExit: UIButton!
     
+    @IBOutlet weak var lblSwitch: UILabel!
+    @IBOutlet weak var lblPriority: UILabel!
+    
+    
+    var ref: DatabaseReference!
     var selectedTask:Task? = nil //Value passed from prev. View Controller
     
     let formatter = DateFormatter()
-    
     let center = UNUserNotificationCenter.current()
-    
+    let placeholderText = "Notes:"
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,9 +45,13 @@ class NotesViewController: UIViewController
 
         setDateFomatter()
         setDatePicker()
+        setFuncionButtonUI()
+        setLabel()
+        setTextViewFont()
         updateTextView()
         
         noteTextView.delegate = (self as UITextViewDelegate)
+        noteTextView.text = placeholderText
         
         let noteSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(noteDismissKeyboard))
         
@@ -54,6 +61,8 @@ class NotesViewController: UIViewController
         titleTextView.addGestureRecognizer(titleSwipe)
         
         //updateYearConstraints()
+        
+        
     }
     
     func setDateFomatter()
@@ -62,16 +71,39 @@ class NotesViewController: UIViewController
         formatter.dateStyle = .medium
     }
     
+    func setFuncionButtonUI()
+    {
+        btnSave.setButtonUI()
+        btnExit.setButtonUI()
+        btnCancel.setButtonUI()
+        btnDelete.setButtonUI()
+    }
+    
     func setDatePicker()
     {
-        datePicker.backgroundColor = UIColor.clear
-        datePicker.layer.cornerRadius = 5.0
-        //datePicker.datePickerMode = .date
-        //datePicker.maximumDate = Date()
-        //datePicker.isHidden = true
-        datePicker.tintColor = UIColor.white
-        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
-
+        datePicker.backgroundColor = Theme.Background
+        datePicker.tintColor = Theme.Tint
+        datePicker.layer.borderWidth = 0
+        datePicker.layer.borderColor = Theme.mainFontColor.cgColor
+        datePicker.setValue(Theme.mainFontColor, forKeyPath: "textColor")
+    }
+    
+    func setLabel()
+    {
+        lblSwitch.setLabelUI()
+        lblPriority.setLabelUI()
+    }
+    
+    func setTextViewFont()
+    {
+        noteTextView.font = UIFont(name: Theme.mainFontName, size: Theme.mainFontSize)
+        titleTextView.font = UIFont(name: Theme.mainFontName, size: Theme.mainFontSize)
+        
+        noteTextView.textColor = Theme.mainFontColor
+        titleTextView.textColor = Theme.mainFontColor
+        
+        lblDate.font = UIFont(name: Theme.mainFontName, size: Theme.mainFontSize)
+        lblDate.textColor = Theme.mainFontColor
     }
     
     func updateTextView()
@@ -98,7 +130,7 @@ class NotesViewController: UIViewController
             if(Date() > tempDate)
             {
                 lblDate.textColor = #colorLiteral(red: 1, green: 0.09992860631, blue: 0.1151061647, alpha: 1)
-                titleTextView.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+                //titleTextView.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
             }
             
             datePicker.setDate(tempDate, animated: true)
@@ -124,22 +156,6 @@ class NotesViewController: UIViewController
         lblDate.text = formatter.string(from: datePicker.date)
     }
     
-    //MARK: - Priority Segment Functions
-//    @IBAction func priorityChanged(_ sender: UISegmentedControl)
-//    {
-//        switch sender.selectedSegmentIndex
-//        {
-//            case 0:
-//                print("None")
-//            case 1:
-//                print("Imp")
-//            case 2:
-//                print("Very Imp")
-//            default:
-//                print("default")
-//        }
-//    }
-    
     //MARK: - Date Picker Function
     @IBAction func datePickerUpdated(_ sender: UIDatePicker)
     {
@@ -155,10 +171,15 @@ class NotesViewController: UIViewController
         {
             enableNotification()
             updateYearConstraints()
+            
+            datePicker.layer.borderWidth = 1
+            //timer.fire()
+        
         }
         else
         {
             lblDate.text = ""
+            datePicker.layer.borderWidth = 0
         }
     }
     
@@ -336,6 +357,18 @@ extension NotesViewController: UITextViewDelegate
     func textViewDidEndEditing(_ textView: UITextView)
     {
         animateViewMoving(up: false, moveValue: 100)
+        
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        if textView.text == placeholderText {
+            textView.text = ""
+        }
+        return true
     }
     
     // Lifting the view up when keyboard is displayed

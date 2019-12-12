@@ -21,8 +21,13 @@ class taskTableViewCell: UITableViewCell
         super.awakeFromNib()
         
         cardView.addShadowAndRoundedCorners()
-        cardView.backgroundColor = Theme.Accent
-        lblTitle.font = UIFont(name: Theme.mainFontName, size: 20)
+        cardView.backgroundColor = Theme.Background
+        
+        lblTitle.font = UIFont(name: Theme.mainFontName, size: Theme.mainFontSize)
+        lblCreationDate.font = UIFont(name: Theme.subtitleFontName, size: Theme.subtitleFontSize)
+
+        lblTitle.textColor = Theme.mainFontColor
+        lblCreationDate.textColor = Theme.subtitleFontColor
     }
 }
 

@@ -60,16 +60,29 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCr-vS-TmK" userLabel="lblTitle">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCr-vS-TmK" userLabel="lblTitle">
                                                     <rect key="frame" x="7" y="0.0" width="348" height="42"/>
-                                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" size="30" name="Avenir-Heavy"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zZ-qg-ywJ" userLabel="lblCreationDate">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zZ-qg-ywJ" userLabel="lblCreationDate">
                                                     <rect key="frame" x="7" y="42" width="348" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" size="17" name="ArialNarrow"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -136,20 +149,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z8H-e1-Sbi" userLabel="titleTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" translatesAutoresizingMaskIntoConstraints="NO" id="z8H-e1-Sbi" userLabel="titleTextView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="66.5"/>
-                                <color key="backgroundColor" red="0.44832645939086291" green="0.44832645939086291" blue="0.44832645939086291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Accent"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QcT-k3-Tdx">
                                 <rect key="frame" x="5" y="130.5" width="365" height="33.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTh-vs-png" userLabel="lblSwitch">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTh-vs-png" userLabel="lblSwitch">
                                         <rect key="frame" x="0.0" y="6.5" width="313" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="Background"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Remind me:">
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-JL-hhn" userLabel="switchRemind">
@@ -164,13 +183,13 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58K-8a-m0K" userLabel="lblDate">
                                 <rect key="frame" x="0.0" y="164" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.44832645939999999" green="0.44832645939999999" blue="0.44832645939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Accent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Kp2-L2-gGx" userLabel="datePicker">
-                                <rect key="frame" x="0.0" y="214" width="375" height="133.5"/>
+                                <rect key="frame" x="0.0" y="224" width="375" height="133.5"/>
                                 <color key="tintColor" name="Tint"/>
                                 <date key="date" timeIntervalSinceReferenceDate="597462584.98839605">
                                     <!--2019-12-08 01:49:44 +0000-->
@@ -180,16 +199,17 @@
                                 </connections>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="OKM-Z3-FeE" userLabel="StackViewPriority">
-                                <rect key="frame" x="0.0" y="347.5" width="375" height="52.5"/>
+                                <rect key="frame" x="0.0" y="367.5" width="375" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atf-r9-Lw9">
-                                        <rect key="frame" x="0.0" y="0.0" width="59.5" height="52.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atf-r9-Lw9" userLabel="lblPriority">
+                                        <rect key="frame" x="0.0" y="0.0" width="59.5" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r46-cS-nit" userLabel="segmentPriority">
-                                        <rect key="frame" x="94.5" y="0.0" width="280.5" height="53.5"/>
+                                        <rect key="frame" x="94.5" y="0.0" width="280.5" height="29"/>
+                                        <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <segments>
                                             <segment title="Low"/>
                                             <segment title="Med."/>
@@ -197,24 +217,6 @@
                                         </segments>
                                         <color key="tintColor" name="Tint"/>
                                     </segmentedControl>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QVm-zP-Pa2" userLabel="StackViewNotes">
-                                <rect key="frame" x="0.0" y="400" width="375" height="233.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01B-Vx-RY8" userLabel="lblNotes">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
-                                        <color key="backgroundColor" red="0.61568627450000002" green="0.61568627450000002" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-pu-Ot3" userLabel="noteTextView">
-                                        <rect key="frame" x="0.0" y="20.5" width="375" height="213"/>
-                                        <color key="backgroundColor" red="0.82579007110000002" green="1" blue="0.99304957760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eLB-R9-zhq" userLabel="StackViewButton">
@@ -258,10 +260,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-pu-Ot3" userLabel="noteTextView">
+                                <rect key="frame" x="0.0" y="405.5" width="375" height="218"/>
+                                <color key="backgroundColor" name="Accent"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kp2-L2-gGx" firstAttribute="top" secondItem="58K-8a-m0K" secondAttribute="bottom" id="0Nz-B6-cag"/>
+                            <constraint firstItem="Kp2-L2-gGx" firstAttribute="top" secondItem="58K-8a-m0K" secondAttribute="bottom" constant="10" id="0Nz-B6-cag"/>
                             <constraint firstItem="QcT-k3-Tdx" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" constant="5" id="1BG-mA-bhy"/>
                             <constraint firstItem="QcT-k3-Tdx" firstAttribute="top" secondItem="z8H-e1-Sbi" secondAttribute="bottom" id="2tQ-35-wG4"/>
                             <constraint firstItem="OKM-Z3-FeE" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="6ty-LI-rNC"/>
@@ -271,30 +279,35 @@
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="Kp2-L2-gGx" secondAttribute="trailing" id="BQS-H5-C6F"/>
                             <constraint firstItem="eLB-R9-zhq" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="BjV-3g-aFK"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="z8H-e1-Sbi" secondAttribute="trailing" id="DEa-qC-171"/>
-                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="top" secondItem="OKM-Z3-FeE" secondAttribute="bottom" id="DgJ-qY-Jnx"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="KYb-E4-Waq"/>
+                            <constraint firstItem="H0v-pu-Ot3" firstAttribute="top" secondItem="OKM-Z3-FeE" secondAttribute="bottom" constant="10" id="Kys-l1-NWU"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="QcT-k3-Tdx" secondAttribute="trailing" constant="5" id="Phj-bc-CI6"/>
-                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.35" id="Pno-7M-fcI"/>
-                            <constraint firstItem="OKM-Z3-FeE" firstAttribute="top" secondItem="Kp2-L2-gGx" secondAttribute="bottom" id="QRJ-MF-4k0"/>
+                            <constraint firstItem="OKM-Z3-FeE" firstAttribute="top" secondItem="Kp2-L2-gGx" secondAttribute="bottom" constant="10" id="QRJ-MF-4k0"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="eLB-R9-zhq" secondAttribute="trailing" id="T1f-XJ-Sld"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="top" secondItem="QcT-k3-Tdx" secondAttribute="bottom" id="TaU-zY-I4e"/>
+                            <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="H0v-pu-Ot3" secondAttribute="trailing" id="XGE-AA-0mS"/>
                             <constraint firstItem="z8H-e1-Sbi" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="Xse-A9-dmg"/>
+                            <constraint firstItem="H0v-pu-Ot3" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="YRB-86-3wh"/>
                             <constraint firstItem="eLB-R9-zhq" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.05" id="Ylm-dd-uTv"/>
-                            <constraint firstItem="eLB-R9-zhq" firstAttribute="top" secondItem="QVm-zP-Pa2" secondAttribute="bottom" id="Z8G-mu-MJQ"/>
-                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="trailing" secondItem="T8a-ge-cjR" secondAttribute="trailing" id="aRR-6R-WUB"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="58K-8a-m0K" secondAttribute="trailing" id="aZF-au-sv5"/>
-                            <constraint firstItem="QVm-zP-Pa2" firstAttribute="leading" secondItem="T8a-ge-cjR" secondAttribute="leading" id="bKz-cG-uZZ"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="trailing" secondItem="OKM-Z3-FeE" secondAttribute="trailing" id="bRv-7T-Znu"/>
                             <constraint firstItem="T8a-ge-cjR" firstAttribute="bottom" secondItem="eLB-R9-zhq" secondAttribute="bottom" id="blb-pl-yL8"/>
                             <constraint firstItem="QcT-k3-Tdx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.05" id="cMF-2a-QoG"/>
                             <constraint firstItem="58K-8a-m0K" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.075" id="fye-tD-q3T"/>
+                            <constraint firstItem="eLB-R9-zhq" firstAttribute="top" secondItem="H0v-pu-Ot3" secondAttribute="bottom" constant="10" id="qAH-ze-fB8"/>
                             <constraint firstItem="Kp2-L2-gGx" firstAttribute="height" secondItem="fS9-u1-USo" secondAttribute="height" multiplier="0.2" id="rPp-Uj-my8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T8a-ge-cjR"/>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="YYI-vq-isA" id="erk-NV-oSy"/>
+                        <outlet property="btnDelete" destination="mRV-yF-gHv" id="OPE-0X-T1P"/>
+                        <outlet property="btnExit" destination="nwo-ZW-4eu" id="QRP-wf-Xnf"/>
+                        <outlet property="btnSave" destination="yBf-tF-szU" id="eYQ-wZ-bSZ"/>
                         <outlet property="datePicker" destination="Kp2-L2-gGx" id="wMi-Xg-l9B"/>
                         <outlet property="lblDate" destination="58K-8a-m0K" id="x76-Di-UJk"/>
+                        <outlet property="lblPriority" destination="atf-r9-Lw9" id="5Bb-xc-E9J"/>
+                        <outlet property="lblSwitch" destination="OTh-vs-png" id="xom-fX-pPI"/>
                         <outlet property="noteTextView" destination="H0v-pu-Ot3" id="KDh-zT-8Px"/>
                         <outlet property="segmentPriority" destination="r46-cS-nit" id="Ygm-H7-PcB"/>
                         <outlet property="switchRemind" destination="hnF-JL-hhn" id="d3A-67-juO"/>
@@ -307,8 +320,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Background">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Accent">
+            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11764705882352941" alpha="0.84700000286102295" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Tint">
             <color red="1" green="0.4779999852180481" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
