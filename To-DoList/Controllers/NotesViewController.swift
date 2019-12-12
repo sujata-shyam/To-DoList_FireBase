@@ -172,9 +172,7 @@ class NotesViewController: UIViewController
             enableNotification()
             updateYearConstraints()
             
-            datePicker.layer.borderWidth = 1
-            //timer.fire()
-        
+            datePicker.layer.borderWidth = 1        
         }
         else
         {

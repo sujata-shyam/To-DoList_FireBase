@@ -24,18 +24,13 @@ class TaskViewController: UITableViewController
         
         setDateFomatter()
         
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressedTableView))
         
         tableView.addGestureRecognizer(longPressRecognizer)
         
-        
-//        self.tableView.estimatedRowHeight = 600
-//        self.tableView.rowHeight = UITableView.automaticDimension
-
         loadTasks()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
     }
     
     //MARK: - LongPress methods
@@ -71,43 +66,62 @@ class TaskViewController: UITableViewController
         cell?.lblCreationDate?.text = tasks[indexPath.row].creationDate
         cell?.lblPriority.backgroundColor = setPriorityColor(index: indexPath.row)
         
-        //cell?.accessoryType = tasks[indexPath.row].done ? .checkmark : .none
+        if let dueDate = formatter.date(from: tasks[indexPath.row].dueDate!)
+        {
+            //let calendar = Calendar.current
+            
+//            print("dueDate:\(dueDate)")
+//            print("Date:\(Date())")
 
+            //let date1 = some time as a date
+            //let date2 = some other time as a date
+            
+            
+
+            
+            //let calendar = Calendar.current
+            if (Date() == dueDate)
+            {
+                let time1 = 60*Calendar.current.component(.hour, from: dueDate) + Calendar.current.component(.minute, from: dueDate)
+                let time2 =  60*Calendar.current.component(.hour, from: Date()) + Calendar.current.component(.minute, from: Date())
+
+                    print("time1: \(time1)")
+                    print("time2: \(time2)")
+                
+                if(time1 <= time2)
+                {
+                    cell?.lblDueAlert.isHidden = false
+                }
+            }
+            else if (Date() > dueDate)
+            {
+                cell?.lblDueAlert.isHidden = false
+            }
+            else
+            {
+                cell?.lblDueAlert.isHidden = true
+            }
+        }
         return cell!
     }
     
-//    override func numberOfSections(in tableView: UITableView) -> Int
-//    {
-//        return 1
-//    }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 80
     }
-//
-//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-//    {
-//        return 100.0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-//    {
-//        return 10.0
-//    }
-    
-    
-    
+
     func setPriorityColor(index:Int)->UIColor
     {
-        switch tasks[index].priority {
-        case 1:
-           return #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        case 2:
-            return #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-        default:
-            return #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        switch tasks[index].priority
+        {
+            case 1:
+                return #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            case 2:
+                return #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            default:
+                return #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         }
-        
     }
     
     //MARK: - TableView Delegate methods
@@ -123,7 +137,7 @@ class TaskViewController: UITableViewController
         taskItem.ref?.updateChildValues([
             "done": taskItem.done
             ])
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func toggleCellCheckbox(_ cell: taskTableViewCell, isDone: Bool)
@@ -131,12 +145,12 @@ class TaskViewController: UITableViewController
         if !isDone
         {
             cell.accessoryType = .none
-            cell.lblTitle.textColor = .black
+            cell.lblTitle.textColor = Theme.mainFontColor
         }
         else
         {
             cell.accessoryType = .checkmark
-            cell.lblTitle.textColor = .gray
+            cell.lblTitle.textColor = Theme.subtitleFontColor
         }
     }
     
@@ -166,18 +180,16 @@ class TaskViewController: UITableViewController
                 }
             }
             
-//            let temp34 = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
-//
-//            self.tasks = temp34
+            if(newTasks.count>0)
+            {
+                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+                
+//                self.tasks = newTasks.sorted{self.formatter.date(from: $0.dueDate!)!.compare(self.formatter.date(from: $1.dueDate!)!) == .orderedAscending}
+            }
             
-//            if(newTasks.count>0)
-//            {
-//                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
-//            }
-            self.tasks = newTasks
+            //self.tasks = newTasks
             
             self.tableView.reloadData()
-//            self.view.layoutIfNeeded()
         })
     }
     
@@ -204,6 +216,11 @@ class TaskViewController: UITableViewController
         
         let creationDateRef = taskRef.child("creationDate")
         creationDateRef.setValue(formatter.string(from: Date()))
+        
+
+        
+        
+        
     }
     
     func createAddAlertAction()

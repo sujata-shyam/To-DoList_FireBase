@@ -14,6 +14,7 @@ class taskTableViewCell: UITableViewCell
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblCreationDate: UILabel!
     
+    @IBOutlet weak var lblDueAlert: UILabel!
     @IBOutlet weak var cardView: UIView!
     
     override func awakeFromNib()

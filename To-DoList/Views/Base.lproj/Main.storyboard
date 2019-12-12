@@ -60,21 +60,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCr-vS-TmK" userLabel="lblTitle">
-                                                    <rect key="frame" x="7" y="0.0" width="348" height="42"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Label">
-                                                            <attributes>
-                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <font key="NSFont" size="30" name="Avenir-Heavy"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCr-vS-TmK" userLabel="lblTitle">
+                                                    <rect key="frame" x="7" y="0.0" width="328" height="42"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zZ-qg-ywJ" userLabel="lblCreationDate">
-                                                    <rect key="frame" x="7" y="42" width="348" height="18"/>
+                                                    <rect key="frame" x="7" y="42" width="328" height="18"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -85,20 +78,30 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-61-vaP" userLabel="lblDueAlert">
+                                                    <rect key="frame" x="335" y="0.0" width="20" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2zZ-qg-ywJ" firstAttribute="top" secondItem="fCr-vS-TmK" secondAttribute="bottom" id="25F-6m-7OX"/>
-                                                <constraint firstAttribute="trailing" secondItem="2zZ-qg-ywJ" secondAttribute="trailing" id="9h2-DS-EWV"/>
+                                                <constraint firstItem="LrX-61-vaP" firstAttribute="top" secondItem="xdv-t7-WWL" secondAttribute="top" id="7pD-Et-MoR"/>
+                                                <constraint firstAttribute="trailing" secondItem="2zZ-qg-ywJ" secondAttribute="trailing" constant="20" id="9h2-DS-EWV"/>
                                                 <constraint firstItem="fCr-vS-TmK" firstAttribute="height" secondItem="xdv-t7-WWL" secondAttribute="height" multiplier="0.7" id="DQv-dH-03o"/>
                                                 <constraint firstItem="2zZ-qg-ywJ" firstAttribute="leading" secondItem="1Jd-T8-zhT" secondAttribute="trailing" id="DZT-bh-6U0"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Jd-T8-zhT" secondAttribute="bottom" id="FE6-ET-sxC"/>
                                                 <constraint firstAttribute="bottom" secondItem="2zZ-qg-ywJ" secondAttribute="bottom" id="KuP-oB-gAW"/>
-                                                <constraint firstAttribute="trailing" secondItem="fCr-vS-TmK" secondAttribute="trailing" id="NSt-NF-5gS"/>
+                                                <constraint firstAttribute="trailing" secondItem="fCr-vS-TmK" secondAttribute="trailing" constant="20" id="NSt-NF-5gS"/>
+                                                <constraint firstItem="LrX-61-vaP" firstAttribute="leading" secondItem="fCr-vS-TmK" secondAttribute="trailing" id="OOC-eg-ny3"/>
                                                 <constraint firstItem="1Jd-T8-zhT" firstAttribute="width" secondItem="xdv-t7-WWL" secondAttribute="width" multiplier="0.02" id="Wgz-qK-QpH"/>
                                                 <constraint firstItem="1Jd-T8-zhT" firstAttribute="top" secondItem="xdv-t7-WWL" secondAttribute="top" id="aH0-Uo-Dhb"/>
                                                 <constraint firstItem="fCr-vS-TmK" firstAttribute="leading" secondItem="1Jd-T8-zhT" secondAttribute="trailing" id="dn7-iO-sF6"/>
                                                 <constraint firstItem="fCr-vS-TmK" firstAttribute="top" secondItem="xdv-t7-WWL" secondAttribute="top" id="e70-5i-FQs"/>
+                                                <constraint firstAttribute="trailing" secondItem="LrX-61-vaP" secondAttribute="trailing" id="fkK-AD-Tw6"/>
                                                 <constraint firstItem="1Jd-T8-zhT" firstAttribute="leading" secondItem="xdv-t7-WWL" secondAttribute="leading" id="qch-DM-7Kb"/>
+                                                <constraint firstAttribute="bottom" secondItem="LrX-61-vaP" secondAttribute="bottom" id="y2w-e0-XBB"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -115,6 +118,7 @@
                                 <connections>
                                     <outlet property="cardView" destination="xdv-t7-WWL" id="4Kw-RB-A1F"/>
                                     <outlet property="lblCreationDate" destination="2zZ-qg-ywJ" id="1QT-bd-GXx"/>
+                                    <outlet property="lblDueAlert" destination="LrX-61-vaP" id="gA3-xB-4io"/>
                                     <outlet property="lblPriority" destination="1Jd-T8-zhT" id="IhE-Ds-Kpu"/>
                                     <outlet property="lblTitle" destination="fCr-vS-TmK" id="XHM-tt-qOK"/>
                                 </connections>
