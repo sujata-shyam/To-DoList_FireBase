@@ -41,6 +41,7 @@ class NotesViewController: UIViewController
         ref = Database.database().reference(withPath: "Task")
 
         setDateFomatter()
+        setDatePicker()
         updateTextView()
         
         noteTextView.delegate = (self as UITextViewDelegate)
@@ -59,6 +60,18 @@ class NotesViewController: UIViewController
     {
         formatter.timeStyle = .short
         formatter.dateStyle = .medium
+    }
+    
+    func setDatePicker()
+    {
+        datePicker.backgroundColor = UIColor.clear
+        datePicker.layer.cornerRadius = 5.0
+        //datePicker.datePickerMode = .date
+        //datePicker.maximumDate = Date()
+        //datePicker.isHidden = true
+        datePicker.tintColor = UIColor.white
+        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+
     }
     
     func updateTextView()

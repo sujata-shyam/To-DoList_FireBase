@@ -35,6 +35,7 @@ class TaskViewController: UITableViewController
 //        self.tableView.rowHeight = UITableView.automaticDimension
 
         loadTasks()
+        view.backgroundColor = Theme.Background
     }
     
     //MARK: - LongPress methods
@@ -79,11 +80,10 @@ class TaskViewController: UITableViewController
 //    {
 //        return 1
 //    }
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-//    {
-//        //self.tableView.estimatedRowHeight = 100
-//        return UITableView.automaticDimension
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80
+    }
 //
 //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
 //    {
@@ -170,11 +170,11 @@ class TaskViewController: UITableViewController
 //
 //            self.tasks = temp34
             
-            if(newTasks.count>0)
-            {
-                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
-            }
-            //self.tasks = newTasks
+//            if(newTasks.count>0)
+//            {
+//                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+//            }
+            self.tasks = newTasks
             
             self.tableView.reloadData()
 //            self.view.layoutIfNeeded()
@@ -330,55 +330,5 @@ class TaskViewController: UITableViewController
         formatter.dateStyle = .medium
     }
 }
-
-//extension TaskViewController: UISearchBarDelegate
-//{
-//    func createRequest(searchText:String)->(NSFetchRequest<Category>,NSPredicate)
-//    {
-//        let request : NSFetchRequest<Category> = Category.fetchRequest()
-//
-//        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
-//
-//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        return (request,predicate)
-//    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
-//    {
-//        let result = createRequest(searchText:searchBar.text!)
-//        loadCategories(with: result.0, predicate: result.1)
-//    }
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-//    {
-//        if(searchBar.text?.count == 0)
-//        {
-//            loadCategories()
-//            DispatchQueue.main.async
-//            {
-//                searchBar.resignFirstResponder()
-//            }
-//        }
-//        else
-//        {
-//            let result = createRequest(searchText:searchBar.text!)
-//            loadCategories(with: result.0, predicate: result.1)
-//        }
-//    }
-//
-//        func findUsers(text: String)->Void
-//        {
-//            ref.child("Users").queryOrderedByChild("name").queryStartingAtValue(text).queryEnding(atValue: text+"\u{f8ff}").observe(.Value, with: { snapshot in
-//            var user = Task()
-//            var users = [Task]()
-//            for u in snapshot.children{
-//                user.name = u.value!["name"] as? String
-//                    ...
-//                    users.append(user)
-//            }
-//            self.users = users
-//            })
-//        }
-//}
 
 

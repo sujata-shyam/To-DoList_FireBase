@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		850460A523A0FFFE009B3EAF /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 850460A423A0FFFE009B3EAF /* Colours.xcassets */; };
 		855174372398F4FE00BCC413 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855174362398F4FE00BCC413 /* Notes.swift */; };
 		85808F61238BC2080090762A /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85808F60238BC2080090762A /* TaskViewController.swift */; };
 		8594F28F23914A4600AB0287 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594F28E23914A4600AB0287 /* NotesViewController.swift */; };
@@ -16,6 +17,10 @@
 		85D6D86B2383EBB5003A7B5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D6D8692383EBB5003A7B5A /* Main.storyboard */; };
 		85D6D86D2383EBB6003A7B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D6D86C2383EBB6003A7B5A /* Assets.xcassets */; };
 		85D6D8702383EBB6003A7B5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D6D86E2383EBB6003A7B5A /* LaunchScreen.storyboard */; };
+		85E05AD223A0ED2F0081C396 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E05AD123A0ED2F0081C396 /* UIViewExtensions.swift */; };
+		85E05AD523A0F0510081C396 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E05AD423A0F0510081C396 /* Theme.swift */; };
+		85E05AD723A0F1000081C396 /* Century in Resources */ = {isa = PBXBuildFile; fileRef = 85E05AD623A0F1000081C396 /* Century */; };
+		85E05AD923A0F4370081C396 /* Calibri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85E05AD823A0F4370081C396 /* Calibri.ttf */; };
 		85F5688F2397938A004B544C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F5688E2397938A004B544C /* Task.swift */; };
 		C2209098A5BB6205A5F572DE /* Pods_To_DoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0724ED90A4DEB8C272F5C681 /* Pods_To_DoList.framework */; };
 /* End PBXBuildFile section */
@@ -24,6 +29,7 @@
 		0724ED90A4DEB8C272F5C681 /* Pods_To_DoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_DoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBFDE48B0B9F03CF71B96D0 /* Pods-To-DoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoList.release.xcconfig"; path = "Pods/Target Support Files/Pods-To-DoList/Pods-To-DoList.release.xcconfig"; sourceTree = "<group>"; };
 		394782B5FE2AA0E9DD14529E /* Pods-To-DoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-To-DoList/Pods-To-DoList.debug.xcconfig"; sourceTree = "<group>"; };
+		850460A423A0FFFE009B3EAF /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
 		855174362398F4FE00BCC413 /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		85808F60238BC2080090762A /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		8594F28E23914A4600AB0287 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +41,10 @@
 		85D6D86C2383EBB6003A7B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85D6D86F2383EBB6003A7B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85D6D8712383EBB6003A7B5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85E05AD123A0ED2F0081C396 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		85E05AD423A0F0510081C396 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		85E05AD623A0F1000081C396 /* Century */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Century; sourceTree = "<group>"; };
+		85E05AD823A0F4370081C396 /* Calibri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calibri.ttf; sourceTree = "<group>"; };
 		85F5688E2397938A004B544C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +119,8 @@
 				85D6D8712383EBB6003A7B5A /* Info.plist */,
 				85A793C023977DF80031B8D4 /* GoogleService-Info.plist */,
 				85D6D8652383EBB5003A7B5A /* AppDelegate.swift */,
+				85E05AD323A0F0310081C396 /* Resources */,
+				85E05AD023A0ED030081C396 /* Extensions */,
 				85F5688D23979360004B544C /* Model */,
 				85A9ADA1238544A400F06505 /* Controllers */,
 				85A9ADA3238544E400F06505 /* Views */,
@@ -116,6 +128,25 @@
 				85964E61238FC5DB004298CC /* taskTableViewCell.swift */,
 			);
 			path = "To-DoList";
+			sourceTree = "<group>";
+		};
+		85E05AD023A0ED030081C396 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				85E05AD123A0ED2F0081C396 /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		85E05AD323A0F0310081C396 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				85E05AD623A0F1000081C396 /* Century */,
+				85E05AD823A0F4370081C396 /* Calibri.ttf */,
+				85E05AD423A0F0510081C396 /* Theme.swift */,
+				850460A423A0FFFE009B3EAF /* Colours.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		85F5688D23979360004B544C /* Model */ = {
@@ -195,8 +226,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85E05AD723A0F1000081C396 /* Century in Resources */,
+				85E05AD923A0F4370081C396 /* Calibri.ttf in Resources */,
 				85D6D8702383EBB6003A7B5A /* LaunchScreen.storyboard in Resources */,
 				85A793C123977DF80031B8D4 /* GoogleService-Info.plist in Resources */,
+				850460A523A0FFFE009B3EAF /* Colours.xcassets in Resources */,
 				85D6D86D2383EBB6003A7B5A /* Assets.xcassets in Resources */,
 				85D6D86B2383EBB5003A7B5A /* Main.storyboard in Resources */,
 			);
@@ -253,6 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				85808F61238BC2080090762A /* TaskViewController.swift in Sources */,
+				85E05AD523A0F0510081C396 /* Theme.swift in Sources */,
+				85E05AD223A0ED2F0081C396 /* UIViewExtensions.swift in Sources */,
 				85F5688F2397938A004B544C /* Task.swift in Sources */,
 				8594F28F23914A4600AB0287 /* NotesViewController.swift in Sources */,
 				85D6D8662383EBB5003A7B5A /* AppDelegate.swift in Sources */,
