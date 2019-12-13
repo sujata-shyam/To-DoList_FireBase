@@ -55,10 +55,12 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -71,6 +73,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Firebase: 6691d47562a780c26281ce8464518faafc90c610
@@ -82,7 +85,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 82f04aeff8426309dbdbc75f6c8accd1e584a5da
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: f9322d0308cb729659fb2ad8cd441be090967a64
+PODFILE CHECKSUM: d6a5d8ae338c888e822d89d32cd22b68bc8f5c39
 
 COCOAPODS: 1.5.0

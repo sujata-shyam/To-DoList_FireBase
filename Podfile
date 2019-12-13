@@ -8,5 +8,5 @@ target 'To-DoList' do
   # Pods for To-DoList
     pod 'Firebase/Core'
     pod 'Firebase/Database'
-  
+    pod 'ReachabilitySwift'
 end

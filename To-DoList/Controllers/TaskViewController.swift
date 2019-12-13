@@ -9,17 +9,22 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import Reachability
 
 class TaskViewController: UITableViewController
 {
+    let reachability = try! Reachability()
+    
     var tasks = [Task]()
     var ref: DatabaseReference!
+    
     
     let formatter = DateFormatter()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setReachabilityNotifier()
         ref = Database.database().reference(withPath: "Task")
         
         setDateFomatter()
@@ -31,6 +36,42 @@ class TaskViewController: UITableViewController
         loadTasks()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
+    }
+    
+    //MARK: - Reachability Function
+    
+    func setReachabilityNotifier()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do
+        {
+            try reachability.startNotifier()
+        }
+        catch
+        {
+            print("Could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note:Notification)
+    {
+        let reachability = note.object as! Reachability
+        switch reachability.connection
+        {
+            case .wifi:
+                print("Reachable via WiFi")
+            case .cellular:
+                print("Reachable via Mobile Data")
+            default:
+                displayAlert(title: "Internet Unavailable", message: "Check Your Network Connection.")
+                print("Network not reachable")
+        }
+    }
+    
+    func stopReachabilityNotification()
+    {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
     
     //MARK: - LongPress methods
@@ -68,25 +109,10 @@ class TaskViewController: UITableViewController
         
         if let dueDate = formatter.date(from: tasks[indexPath.row].dueDate!)
         {
-            //let calendar = Calendar.current
-            
-//            print("dueDate:\(dueDate)")
-//            print("Date:\(Date())")
-
-            //let date1 = some time as a date
-            //let date2 = some other time as a date
-            
-            
-
-            
-            //let calendar = Calendar.current
             if (Date() == dueDate)
             {
                 let time1 = 60*Calendar.current.component(.hour, from: dueDate) + Calendar.current.component(.minute, from: dueDate)
                 let time2 =  60*Calendar.current.component(.hour, from: Date()) + Calendar.current.component(.minute, from: Date())
-
-                    print("time1: \(time1)")
-                    print("time2: \(time2)")
                 
                 if(time1 <= time2)
                 {
