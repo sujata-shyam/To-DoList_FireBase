@@ -180,14 +180,14 @@ class TaskViewController: UITableViewController
                 }
             }
             
-            if(newTasks.count>0)
-            {
-                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
-
-//                self.tasks = newTasks.sorted{self.formatter.date(from: $0.dueDate!)!.compare(self.formatter.date(from: $1.dueDate!)!) == .orderedAscending}
-            }
-            
-            //self.tasks = newTasks
+//            if(newTasks.count>0)
+//            {
+//                self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
+//
+////                self.tasks = newTasks.sorted{self.formatter.date(from: $0.dueDate!)!.compare(self.formatter.date(from: $1.dueDate!)!) == .orderedAscending}
+//            }
+//            
+            self.tasks = newTasks
             
             self.tableView.reloadData()
         })

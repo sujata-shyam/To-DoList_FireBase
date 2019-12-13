@@ -220,26 +220,62 @@ class NotesViewController: UIViewController
     
     func saveDetails()
     {
-        selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
-        
-        selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
+        var dueDate = ""
+        var remind = false
         
         if(switchRemind.isOn)
         {
             if(!lblDate.text!.isEmpty)
             {
-                selectedTask?.ref!.updateChildValues(["dueDate": lblDate.text ?? ""])
+                dueDate = lblDate.text!
             }
-            
-            selectedTask?.ref!.updateChildValues(["remind": true])
+            remind = true
             self.scheduleNotification()
         }
-        else if(!switchRemind.isOn)
-        {
-            selectedTask?.ref!.updateChildValues(["dueDate": ""])
-            selectedTask?.ref!.updateChildValues(["remind": false])
+        
+        let updateDetails = [
+            "note": noteTextView.text!,
+            "priority": segmentPriority.selectedSegmentIndex,
+            "remind":  remind,
+            "dueDate": dueDate,
+            ] as [String : Any]
+        
+        selectedTask?.ref!.updateChildValues(updateDetails){
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+                self.displayAlert(title: "", message: "Data could not be saved")
+            }
+            else
+            {
+                self.displayAlert(title: "", message: "Data saved successfully!")
+            }
         }
     }
+    
+    
+//    func saveDetails()
+//    {
+//        selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
+//
+//        selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
+//
+//        if(switchRemind.isOn)
+//        {
+//            if(!lblDate.text!.isEmpty)
+//            {
+//                selectedTask?.ref!.updateChildValues(["dueDate": lblDate.text ?? ""])
+//            }
+//
+//            selectedTask?.ref!.updateChildValues(["remind": true])
+//            self.scheduleNotification()
+//        }
+//        else if(!switchRemind.isOn)
+//        {
+//            selectedTask?.ref!.updateChildValues(["dueDate": ""])
+//            selectedTask?.ref!.updateChildValues(["remind": false])
+//        }
+//    }
     
     //MARK: - Dismiss the keyboard
     @objc func titleDismissKeyboard()
@@ -253,16 +289,11 @@ class NotesViewController: UIViewController
         noteTextView.resignFirstResponder()
     }
     
-    func showAlert(_ alertMessage:String)
+    func displayAlert(title: String, message: String)
     {
-//        let alert = UIAlertController(title: "", message: "Task due-date passed", preferredStyle: .alert)
-
-        let alert = UIAlertController(title: "", message: alertMessage, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        let alert =  UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler:nil ))
+        present(alert, animated: true)
     }
     
     //MARK: - Notification Functions
