@@ -224,16 +224,6 @@ class NotesViewController: UIViewController
         
         selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
         
-        //        if(!noteTextView.text.isEmpty)
-//        {
-//            selectedTask?.ref!.updateChildValues(["note": noteTextView.text!])
-//        }
-        
-//        if(segmentPriority.selectedSegmentIndex > 0 )
-//        {
-//            selectedTask?.ref!.updateChildValues(["priority": segmentPriority.selectedSegmentIndex])
-//        }
-        
         if(switchRemind.isOn)
         {
             if(!lblDate.text!.isEmpty)
@@ -249,7 +239,6 @@ class NotesViewController: UIViewController
             selectedTask?.ref!.updateChildValues(["dueDate": ""])
             selectedTask?.ref!.updateChildValues(["remind": false])
         }
-        
     }
     
     //MARK: - Dismiss the keyboard

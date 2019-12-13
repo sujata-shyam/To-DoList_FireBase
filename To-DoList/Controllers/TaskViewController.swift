@@ -183,7 +183,7 @@ class TaskViewController: UITableViewController
             if(newTasks.count>0)
             {
                 self.tasks = newTasks.sorted{self.formatter.date(from: $0.creationDate!)!.compare(self.formatter.date(from: $1.creationDate!)!) == .orderedAscending}
-                
+
 //                self.tasks = newTasks.sorted{self.formatter.date(from: $0.dueDate!)!.compare(self.formatter.date(from: $1.dueDate!)!) == .orderedAscending}
             }
             
@@ -230,8 +230,11 @@ class TaskViewController: UITableViewController
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
+                self.displayAlert(title: "", message: "Data could not be saved")
+            }
+            else
+            {
+                self.displayAlert(title: "", message: "Data saved successfully!")
             }
         }
     }
@@ -358,6 +361,13 @@ class TaskViewController: UITableViewController
     {
         formatter.timeStyle = .short
         formatter.dateStyle = .medium
+    }
+    
+    func displayAlert(title: String, message: String)
+    {
+        let alert =  UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler:nil ))
+        present(alert, animated: true)
     }
 }
 
