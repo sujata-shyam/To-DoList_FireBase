@@ -199,28 +199,41 @@ class TaskViewController: UITableViewController
     {
         let taskRef = self.ref.child(name)
         
-        let doneRef = taskRef.child("done")
-        doneRef.setValue(false)
+//        let doneRef = taskRef.child("done")
+//        doneRef.setValue(false)
+//
+//        let noteRef = taskRef.child("note")
+//        noteRef.setValue("")
+//
+//        let priorityRef = taskRef.child("priority")
+//        priorityRef.setValue(0)
+//
+//        let remindRef = taskRef.child("remind")
+//        remindRef.setValue(false)
+//
+//        let dueDateRef = taskRef.child("dueDate")
+//        dueDateRef.setValue("")
+//
+//        let creationDateRef = taskRef.child("creationDate")
+//        creationDateRef.setValue(formatter.string(from: Date()))
         
-        let noteRef = taskRef.child("note")
-        noteRef.setValue("")
+        let taskDetails = [
+            "done":  false,
+            "note": "",
+            "priority": 0,
+            "remind":  false,
+            "dueDate": "",
+            "creationDate": formatter.string(from: Date())
+            ] as [String : Any]
         
-        let priorityRef = taskRef.child("priority")
-        priorityRef.setValue(0)
-        
-        let remindRef = taskRef.child("remind")
-        remindRef.setValue(false)
-        
-        let dueDateRef = taskRef.child("dueDate")
-        dueDateRef.setValue("")
-        
-        let creationDateRef = taskRef.child("creationDate")
-        creationDateRef.setValue(formatter.string(from: Date()))
-        
-
-        
-        
-        
+        taskRef.setValue(taskDetails){
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
     }
     
     func createAddAlertAction()
